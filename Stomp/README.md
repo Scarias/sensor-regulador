@@ -43,7 +43,20 @@
 1. Dentro de la página seguir los pasos
    del [siguiente tutorial](https://funprojects.blog/2020/05/14/stomp-protocol-with-rabbitmq-node-red-and-python/).
 2. Instalar Stomp en python con 'pip install stomp.py'.
-3. Correr stomp_listener.py y en otra consola correr stomp_producer.py.
+3. Correr `python <listener|producer [...number]>`.
+
+### Ejecutando listener
+
+Para el listener, la ejecución es sencilla, puesto que sólo deberemos ejecutar `python listener`.
+
+### Ejecutando producer
+
+El producer tiene un detalle adicional, y es que require de un argumento numérico, entre 1 y la cantidad de _messengers_ que producen datos. En particular, la firma de la función es:
+
+```console
+python producer <número_messenger>
+```
+siendo `<número_messenger>` el número del messenger que se desee ejecutar.
 
 > Una modificación que hice pero creo que no sirvió de nada, fue colocar explicitamente el puerto. Esto lo hice creando
 > un archivo en C:\Users\User\AppData\Roaming\RabbitMQ\rabbitmq-env-conf.bat y colocándole 'set DIST_PORT=44556'.
