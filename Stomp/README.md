@@ -5,9 +5,8 @@
 ### Windows
 
 1. Descargar e instalar [RabbitMQ para Windows](https://www.rabbitmq.com/install-windows.html#downloads), en la parte
-   que
-   dice "Direct Downloads".
-2. Verificar la instalación de RabbitMQ instalando y iniciando el servicio. Esto se hace a través de la consola del
+   que dice "Direct Downloads".
+2. Verificar la instalación de RabbitMQ instalando y iniciando el servicio. Esto se hace a través de la consola de
    RabbitMQ. Los comandos son:
     - Para instalar: `.\rabbitmq-service.bat install`.
     - Para desinstalar: `.\rabbitmq-service.bat remove`.
