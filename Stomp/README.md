@@ -19,8 +19,6 @@
     - `rabbitmq-plugins.bat enable rabbitmq_stomp`.
 4. Después de instalar los plugins, detener e iniciar RabbitMQ (con los comandos de la parte 2) y luego ingresar
    a http://localhost:15672/ con el usuario y contraseña 'guest' y 'guest'.
-5. Dentro de la página seguir los pasos
-   del [siguiente tutorial](https://funprojects.blog/2020/05/14/stomp-protocol-with-rabbitmq-node-red-and-python/).
 
 ### Linux
 
@@ -43,8 +41,10 @@
 
 ## Ejecutando el Stomp
 
-1. Instalar Stomp en python con 'pip install stomp.py'.
-2. Correr stomp_listener.py y en otra consola correr stomp_producer.py.
+1. Dentro de la página seguir los pasos
+   del [siguiente tutorial](https://funprojects.blog/2020/05/14/stomp-protocol-with-rabbitmq-node-red-and-python/).
+2. Instalar Stomp en python con 'pip install stomp.py'.
+3. Correr stomp_listener.py y en otra consola correr stomp_producer.py.
 
 > Una modificación que hice pero creo que no sirvió de nada, fue colocar explicitamente el puerto. Esto lo hice creando
 > un archivo en C:\Users\User\AppData\Roaming\RabbitMQ\rabbitmq-env-conf.bat y colocándole 'set DIST_PORT=44556'.
