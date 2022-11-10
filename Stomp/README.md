@@ -47,3 +47,7 @@
 
 > Una modificación que hice pero creo que no sirvió de nada, fue colocar explicitamente el puerto. Esto lo hice creando
 > un archivo en C:\Users\User\AppData\Roaming\RabbitMQ\rabbitmq-env-conf.bat y colocándole 'set DIST_PORT=44556'.
+
+## Cosas por hacer
+
+- "Dockerizar" Stomp.
