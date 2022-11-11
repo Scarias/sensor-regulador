@@ -2,6 +2,7 @@ import stomp
 import numpy as np
 import time
 
+
 def process():
     np.random.seed(1)
 

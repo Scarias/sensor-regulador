@@ -2,6 +2,7 @@ def out_range(frame):
     if float(frame.body.split(',')[0]) < 0 or float(frame.body.split(',')[0]) > 5:
         return '%s: abnormal value at sensors %s'
 
+
 def luminosity_level(frame):
     result_msg = out_range(frame)
     if not result_msg:

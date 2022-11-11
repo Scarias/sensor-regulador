@@ -4,8 +4,8 @@ import importlib
 import messengers
 
 parser = argparse.ArgumentParser(
-    prog = 'Producer runner',
-    description = 'Corre el messenger indicado'
+    prog='Producer runner',
+    description='Corre el messenger indicado'
 )
 parser.add_argument(
     'messenger_number',
