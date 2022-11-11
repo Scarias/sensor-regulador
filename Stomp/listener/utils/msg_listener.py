@@ -1,6 +1,6 @@
 from stomp import ConnectionListener
 
-from .filter import luminosity_level
+from utils.filter import luminosity_level
 
 
 class MsgListener(ConnectionListener):

@@ -1,7 +1,7 @@
 import argparse
-import importlib
 
-import messengers
+import messengers.messenger_1 as msg1
+import messengers.messenger_2 as msg2
 
 parser = argparse.ArgumentParser(
     prog='Producer runner',
@@ -10,10 +10,14 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     'messenger_number',
     type=int,
-    choices=range(1, len(messengers.__all__)+1)
+    choices=range(1, 3)
 )
 
 args = parser.parse_args()
 
-messenger = importlib.import_module(f'messengers.messenger_{args.messenger_number}')
-messenger.process()
+cases = {
+    1: msg1,
+    2: msg2
+}
+if cases[args.messenger_number]:
+    cases[args.messenger_number].process()
