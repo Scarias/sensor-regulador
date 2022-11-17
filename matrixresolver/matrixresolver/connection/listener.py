@@ -1,5 +1,4 @@
 from stomp import Connection, ConnectionListener
-from time import sleep
 
 from ..utils.filter import out_range
 
@@ -8,11 +7,12 @@ N_SENSORS = 10
 
 
 class MsgListener(ConnectionListener):
-    data: dict(int, list) = dict()
+    data = dict()
+    queue_empty = True
 
     def __init__(self, total_sensors):
-        for i in range(len(total_sensors)):
-            data[i] = list()
+        for i in range(total_sensors):
+            self.data[i] = list()
 
     def on_error(self, frame):
         print('Error recibido: %s' % frame.body)
