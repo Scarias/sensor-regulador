@@ -3,12 +3,18 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "matrixresolver"
-description = ''
+name = "MatrixInfoAggregator"
+description = "Un programa para recibir datos de sensores y unificarlos en un único mensaje para el broker"
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
-keywords = []
+keywords = [
+    "Matrix",
+    "Aggregator",
+    "Filter",
+    "Sensors",
+    "Broker"
+]
 authors = [
   { name = "Bastian Soto Iturra", email = "bastian.sotoi@sansano.usm.cl" },
 ]
@@ -30,37 +36,6 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/unknown/matrixresolver#readme"
-Issues = "https://github.com/unknown/matrixresolver/issues"
-Source = "https://github.com/unknown/matrixresolver"
-
-[tool.hatch.version]
-path = "matrixresolver/__about__.py"
-
-[tool.hatch.envs.default]
-dependencies = [
-  "pytest",
-  "pytest-cov",
-  "numpy",
-  "stomp.py"
-]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=matrixresolver --cov=tests {args}"
-no-cov = "cov --no-cov {args}"
-
-[[tool.hatch.envs.test.matrix]]
-python = ["37", "38", "39", "310", "311"]
-
-[tool.coverage.run]
-branch = true
-parallel = true
-omit = [
-  "matrixresolver/__about__.py",
-]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
+Documentation = "https://github.com/Scarias/sensor-regulador/tree/main/MatrixInfoAggregator#readme"
+Issues = "https://github.com/Scarias/sensor-regulador/issues"
+Source = "https://github.com/Scarias/sensor-regulador/tree/main/MatrixInfoAggregator"
