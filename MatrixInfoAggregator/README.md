@@ -1,21 +1,38 @@
-# MatrixResolver
+# MatrixInfoAggregator
 
-[![PyPI - Version](https://img.shields.io/pypi/v/matrixresolver.svg)](https://pypi.org/project/matrixresolver)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/matrixresolver.svg)](https://pypi.org/project/matrixresolver)
+_MatrixInfoAggregator_ es un servicio incluido dentro del proyecto _LumenSense_, que trata los datos recibidos del sensor para luego enviarlos de una forma compacta y útil a la cola en RabbitMQ, alojada en AWS.
 
------
+## Forma de uso
 
-**Table of Contents**
+### **Opción 2:** Script
 
-- [Installation](#installation)
-- [License](#license)
+Para la facilidad del usuario final y de los desarrolladores mismos, se creó un sencillo script que permite levantar el proyecto de forma sencilla. Para ello, sólo debe ejecutar el script `run.sh` desde la carpeta `MatrixInfoAggregator`.
 
-## Installation
+### **Opción 3:** Configuración manual
+
+En caso de no poder ejecutar el script, se puede levantar el servicio manualmente, para ello:
+
+1. Debe crear un entorno virtual para instalar las dependencias. Se recomienda usar el módulo `venv` de Python, de la siguiente forma:
 
 ```console
-pip install matrixresolver
+python -m venv <nombre>
+```
+donde nombre es el el nombre del entorno virtual a crear. Luego, puede ingresar usando:
+```console
+source <nombre>/bin/activate
+```
+en GNU/Linux con `bash`, o:
+```console
+<nombre>\Scripts\Activate.ps1
 ```
 
-## License
+2. Utilice el comando:
+```console
+pip install -r requirements.txt
+```
+para instalar las librerias de Python necesarias para ejecutar el servicio.
 
-`matrixresolver` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+3. Ejecute el servicio contenido en la carpeta `src`:
+```console
+python src/
+```
