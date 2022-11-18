@@ -1,6 +1,6 @@
 from stomp import Connection, ConnectionListener
 
-from ..utils.filter import out_range
+from utils.filter import out_range
 
 
 N_SENSORS = 10

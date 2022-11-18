@@ -1,8 +1,8 @@
 from time import sleep
 
-from .connection.listener import conn as sensor_conn
-from .connection.sender import conn as expert_conn
-from .utils.joiner import prepare_data
+from connection.listener import conn as sensor_conn
+from connection.sender import conn as expert_conn
+from utils.joiner import prepare_data
 
 
 SLEEP_TIME = 1 # in seconds
