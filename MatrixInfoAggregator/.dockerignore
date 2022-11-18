@@ -1,0 +1,9 @@
+dist/
+env/
+tests/
+
+.coverage
+LICENSE.txt
+pyproject.toml
+README.md
+run.sh
