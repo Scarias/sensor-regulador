@@ -1,13 +1,13 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "MatrixInfoAggregator"
 description = "Un programa para recibir datos de sensores y unificarlos en un único mensaje para el broker"
 readme = "README.md"
 requires-python = ">=3.7"
-license = "MIT"
+license = { file = "LICENSE.txt" }
 keywords = [
     "Matrix",
     "Aggregator",
