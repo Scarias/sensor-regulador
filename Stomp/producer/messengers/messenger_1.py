@@ -12,8 +12,8 @@ def process():
     while True:
         conn.send(
             body=str(np.random.random() * 5 + np.random.randn()) + ",1",
-            destination="/queue/test",
-            content_type="text/blah",
+            destination="/queue/sensors",
+            content_type="text/plain",
             receipt="123"
         )
         time.sleep(2)
