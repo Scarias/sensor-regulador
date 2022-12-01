@@ -5,4 +5,5 @@ fi
 source env/bin/activate
 pip install -r requirements.txt
 
-python src/
+python listener.py &
+python sender.py &
