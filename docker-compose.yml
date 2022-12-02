@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  stomp-producer:
+    image: se-stomp-producer
+    build:
+      context: Stomp
+      dockerfile: producer/Dockerfile
+    ports:
+      - 42056:5672
+      - 42061:61613
+
+  matrix-info-aggregator:
+    image: se-mta
+    build:
+      context: MatrixInfoAggregator
+      dockerfile: ./Dockerfile
+    ports:
+      - 42156:5671
+      - 42161:61613
+
+#
+#  rabbitmq:
+#    image: se-rabbitmq
+#    build:
+#      context: Stomp
+#      dockerfile: broker/Dockerfile
+#    ports:
+#      - 42256:5672
+#      - 42215:15672
+#      - 42261:61613
