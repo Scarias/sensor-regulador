@@ -6,7 +6,7 @@ _MatrixInfoAggregator_ es un servicio incluido dentro del proyecto _LumenSense_,
 
 ### **Opción 1 (Recomendada):** Construir imagen
 
-Puede utilizar nuestro servicio, puede construir una imagen usando Docker, el cual utiliza la imagen de Python 3.9.15. Por ejemplo, puede construir la imagen con:
+Para utilizar nuestro servicio, puede construir una imagen usando Docker, el cual utiliza la imagen de Python 3.9.15. Por ejemplo, puede construir la imagen con:
 ```console
 docker build -t palotes-de-perico/matrix-info-aggregator:0.0.1 .
 ```
