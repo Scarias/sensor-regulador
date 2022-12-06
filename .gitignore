@@ -2,6 +2,7 @@
 **/.fleet
 
 **/env
+**/.env
 **/__pycache__
 **/*.egg-info
 **/dist
