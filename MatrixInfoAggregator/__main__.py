@@ -34,6 +34,8 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print(' [-] Conexión terminada por el usuario.')
         try:
+            main_listener.close()
+            main_sender.close()
             sys_exit(0)
         except SystemExit:
             os_exit(0)
