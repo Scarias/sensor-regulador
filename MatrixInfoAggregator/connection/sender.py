@@ -2,8 +2,8 @@ from utils.base_client import AWSPikaClient
 
 
 class MsgSender(AWSPikaClient):
-    def __init__(self) -> None:
-        super().__init__('amqps://b-8b498cb5-9d99-4ed2-acde-1e582a552c11.mq.sa-east-1.amazonaws.com:5671')
+    def __init__(self, broker_id, user, password, region) -> None:
+        super().__init__(broker_id, user, password, region)
 
     def declare_queue(self, queue):
         print(f"Declarando queue {queue}")
@@ -17,10 +17,6 @@ class MsgSender(AWSPikaClient):
         )
         print(' [*] Datos enviados a Amazon MQ.')
 
-"""
-def sender():
-    conn = Connection([('b-770ca97b-c743-4527-9daf-e275398a5239.mq.sa-east-1.amazonaws.com', 5671)])
-    conn.connect()
-
-    return conn
-"""
+    def close(self):
+        self.channel.close()
+        self.conn.close()

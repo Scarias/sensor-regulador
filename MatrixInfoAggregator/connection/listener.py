@@ -11,7 +11,8 @@ class MsgListener(AWSPikaClient):
             self.data[i] = list()
 
     def on_error(self, body):
-        print('Error recibido: %s' % body)
+        if body:
+            print('Error recibido: %s' % body)
 
     def on_message(self, ch, method, properties, body):
         # out-of-range data
@@ -33,26 +34,18 @@ class MsgListener(AWSPikaClient):
     def listen_messages(self, queue='sensors'):
         self.channel.basic_consume(queue=queue, on_message_callback=self.on_message, auto_ack=True)
 
-        print(' [*] Listening sensors')
+        print(' [*] Escuchando sensores...')
         self.channel.start_consuming()
 
     def get_message(self, queue='sensors'):
+        self.channel.queue_declare(queue)
         method, header, body = self.channel.basic_get(queue=queue)
         if method:
             self.channel.basic_ack(method.delivery_tag)
             self.on_message(queue, method, header, body)
         else:
-            self.on_error(self, body)
+            self.on_error(body)
 
     def close(self):
         self.channel.close()
         self.conn.close()
-
-    """
-    conn = Connection([('localhost', 61613)])
-    conn.set_listener('sensor_listener', msg_list)
-    conn.connect()
-    conn.subscribe(destination='/queue/sensors', id='1', ack='auto', transformation='jms-json')
-
-    return conn
-    """
