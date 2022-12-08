@@ -12,12 +12,12 @@ class MsgListener(AWSPikaClient):
 
     def on_error(self, body):
         if body:
-            print('Error recibido: %s' % body)
+            print(' [i] Error recibido: %s' % body)
 
     def on_message(self, ch, method, properties, body):
         # out-of-range data
         if out_range(body):
-            print('%s: Valor anormal en sensor %s' % tuple(body.split(b',')))
+            print(' [i] %s: Valor anormal en sensor %s' % tuple(body.split(b',')))
             return
 
         # local queueing for data
@@ -25,11 +25,16 @@ class MsgListener(AWSPikaClient):
         value = float(value)
         sensor = int(sensor)
         if sensor not in self.data:
-            print('Sensor desconocido: %s' % (sensor, ))
+            print(' [i] Sensor desconocido: %s' % (sensor, ))
             return
         self.data[sensor].append(value)
 
-        print('%s: Valor recibido desde sensor %s' % (value, sensor))
+        print(' [x] %s: Valor recibido desde sensor %s' % (value, sensor))
+
+    def declare_queue(self, queue):
+        print(f' [*] Declarando queue {queue}')
+        self.channel.queue_declare(queue)
+        print(f' [x] {queue} declarada')
 
     def listen_messages(self, queue='sensors'):
         self.channel.basic_consume(queue=queue, on_message_callback=self.on_message, auto_ack=True)
@@ -38,7 +43,6 @@ class MsgListener(AWSPikaClient):
         self.channel.start_consuming()
 
     def get_message(self, queue='sensors'):
-        self.channel.queue_declare(queue)
         method, header, body = self.channel.basic_get(queue=queue)
         if method:
             self.channel.basic_ack(method.delivery_tag)
