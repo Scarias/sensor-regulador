@@ -5,6 +5,7 @@ from time import sleep
 
 from connection.listener import MsgListener
 from connection.sender import MsgSender
+from utils.clean_data import clean_data
 
 from utils.joiner import prepare_data
 
@@ -36,6 +37,9 @@ if __name__ == '__main__':
 
                 # and send that data
                 main_sender.send_message(exchange='', routing_key='expert', body=prepared_data)
+
+                # clean data to not send repeated messages
+                clean_data(main_listener.data)
 
             # Stop for a while
             sleep(SLEEP_TIME)
