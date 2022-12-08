@@ -1,13 +1,13 @@
-from stomp import ConnectionListener
+from utils.base_client import AWSPikaClient
 
-from utils.filter import luminosity_level
+class ListenerLocalNoAmq(AWSPikaClient):
+    def __init__(self):
+        super().__init__(aws=False)
 
-
-class MsgListener(ConnectionListener):
-    def on_error(self, message):
-        print('received an error %s' % message.body)
-
-    def on_message(self, frame):
-        msg = luminosity_level(frame)
-        if msg:
-            print(msg)
+    def callback(self, ch, method, properties, body):
+        print(" [x] Received %r" % body)
+    
+    def listen(self, queue_name):
+        self.channel.queue_declare(queue=queue_name)
+        self.channel.basic_consume(queue=queue_name, on_message_callback=self.callback, auto_ack=True)
+        self.channel.start_consuming()
