@@ -20,12 +20,15 @@ if __name__ == '__main__':
 
     try:
         main_listener = MsgListener(N_SENSORS)
+        main_listener.declare_queue('sensors')
+
         main_sender = MsgSender(
             config['AWS_BROKER_ID'],
             config['AWS_USER'],
             config['AWS_PASSWORD'],
             config['AWS_REGION']
         )
+        main_sender.declare_queue('expert')
 
         while 1:
             # Get from sensors
