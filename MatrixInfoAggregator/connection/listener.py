@@ -17,11 +17,11 @@ class MsgListener(AWSPikaClient):
     def on_message(self, ch, method, properties, body):
         # out-of-range data
         if out_range(body):
-            print('%s: Valor anormal en sensor %s' % tuple(body.body.split(',')))
+            print('%s: Valor anormal en sensor %s' % tuple(body.split(b',')))
             return
 
         # local queueing for data
-        value, sensor = tuple(body.body.split(','))
+        value, sensor = tuple(body.split(b','))
         value = float(value)
         sensor = int(sensor)
         if sensor not in self.data:

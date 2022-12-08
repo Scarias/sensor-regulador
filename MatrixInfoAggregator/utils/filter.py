@@ -1,2 +1,2 @@
 def out_range(body) -> bool:
-    return float(body.body.split(',')[0]) < 0 or float(body.body.split(',')[0]) > 5
+    return float(body.split(b',')[0]) < 0 or float(body.split(b',')[0]) > 5
