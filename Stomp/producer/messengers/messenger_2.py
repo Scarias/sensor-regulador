@@ -1,6 +1,8 @@
 import numpy as np
 import time
 
+import logging
+
 from utils.msg_sender import SenderLocalNoAmq
 
 
@@ -14,5 +16,9 @@ class Messenger:
 def process():
     messenger = Messenger()
     while True:
-        messenger.send('sensors', str(np.random.random() * 5 + np.random.randn()) + ",2")
+        t = time.localtime()
+        current_time = time.strftime("%d/%m/%Y %H:%M:%S", t)
+        msj = str(np.random.random() * 5 + np.random.randn()) + ",2"
+        logging.info(msj + " " + current_time)
+        messenger.send('sensors', msj)
         time.sleep(2)
