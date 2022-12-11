@@ -1,6 +1,6 @@
 FROM python:3.9.15-slim
 
-EXPOSE 5672
+EXPOSE 5671 5672
 
 WORKDIR /app
 
