@@ -8,4 +8,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-CMD [ "uwsgi", "--http", "0.0.0.0:80", "--master", "-p", "4", "-w", "main:app" ]
+CMD [ "uwsgi", "--http", ":80", "--master", "-p", "4", "-w", "main:app" ]
