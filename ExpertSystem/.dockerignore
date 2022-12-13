@@ -1,0 +1,6 @@
+**/.dockerignore
+**/Dockerfile
+
+**/env
+**/README.md
+**/__pycache__

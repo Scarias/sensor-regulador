@@ -1,7 +1,10 @@
 import argparse
 
+import logging
+
 import messengers.messenger_1 as msg1
 import messengers.messenger_2 as msg2
+
 
 parser = argparse.ArgumentParser(
     prog='Producer runner',
@@ -20,4 +23,7 @@ cases = {
     2: msg2
 }
 if cases[args.messenger_number]:
+    logging.basicConfig(filename='data.log', level=logging.INFO)
+    logging.info('Started ' + str(args.messenger_number))
     cases[args.messenger_number].process()
+    logging.info('Finished')
