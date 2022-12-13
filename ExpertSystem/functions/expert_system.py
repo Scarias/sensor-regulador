@@ -1,16 +1,12 @@
 import numpy as np
-import json
 
 
 # data: {#sensor: distancia conseguida por el sensor # (float), ... (hasta n sensores)}
 # distance_matrix: matriz de distancia entre sensores {k_sensor:[(todos los sensores en orden exceptuando el k sensor)]}
 
-def expert_system(event, context):
-    to_return = {}
+def matrix_calc(data, distance):
+    to_add = {}
     temp = {}
-
-    data = json.loads(event)["body"]["data"]
-    distance = json.loads(event)["body"]["distance"]
 
     values = list(data.items())
     values.sort(key=lambda x: x[1])
@@ -20,7 +16,7 @@ def expert_system(event, context):
             if values[k][0] == values[i][0]:
                 continue
 
-            if distance[values[k][0]][int(values[i][0]) - 1] >= 5:
+            if distance[values[k][0]][int(values[i][0]) - 1] >= 8:
                 try:
                     temp[values[k][0]].append(np.random.randint(0, 1))
                 except KeyError:
@@ -48,6 +44,6 @@ def expert_system(event, context):
                 temp[values[i][0]] = [np.random.randint(0, 2)]
 
     for i in temp.keys():
-        to_return[i] = sum(temp[i]) / len(temp[i])
-
-    return json.dumps(to_return)
+        to_add[i] = sum(temp[i]) / len(temp[i])
+        
+    return to_add
