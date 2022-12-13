@@ -8,4 +8,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-CMD [ "flask", "--app", "main.py", "run", "--port=80", "--host=0.0.0.0" ]
+CMD [ "uwsgi --http 0.0.0.0:80 --master -p 4 -w main:app" ]
