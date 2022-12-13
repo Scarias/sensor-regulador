@@ -8,4 +8,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-CMD [ "flask", "--app", "main.py", "run", "--port=80" ]
+CMD [ "flask", "--app", "main.py", "run", "--port=80", "--host=0.0.0.0" ]
